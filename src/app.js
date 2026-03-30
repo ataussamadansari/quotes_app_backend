@@ -17,10 +17,11 @@ app.set('trust proxy', env.trustProxy);
 
 app.use(attachRequestContext);
 app.use(requestLogger);
-app.use(helmet());
+app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(
   cors({
-    origin: env.corsOrigins,
+    origin: env.corsOrigins.includes('*') ? '*' : env.corsOrigins,
+    credentials: !env.corsOrigins.includes('*'),
   }),
 );
 app.use(express.json({ limit: '1mb' }));
