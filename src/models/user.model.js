@@ -64,7 +64,7 @@ const userSchema = new mongoose.Schema(
     },
     googleId: {
       type: String,
-      default: null,
+      default: undefined,
     },
     avatarUrl: {
       type: String,

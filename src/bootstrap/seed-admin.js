@@ -42,6 +42,7 @@ export const ensureAdminAccount = async () => {
         local: true,
         google: false,
       },
+      googleId: undefined, // sparse index — null causes duplicate key with multiple non-google users
     });
 
     logger.info('Admin account seeded.', {
